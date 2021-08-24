@@ -126,8 +126,71 @@
 	\begin{itemize}
 		\item  TCP/IP model berdasarkan 2 protokol utama, TCP dan IP.
 		\item Powerful, diimplementasikan secara luas dalam computer network saat ini.
-		\item 
+		\item Dikembangkan oleh ARPANET, yang disponsori oleh Departemen Pertahanan Amerika Serikat.
+		\item Dijuluki mbahnya computer network.
+		\item Terdiri dari 5 layer: physical, data link, network, transport, dan application.
+		\item Application layer $\approx$ kombinasi dari session, presentation dan application layer di OSI.
 	\end{itemize}	
 \end{frame}
+% ----------------------------------------------------------------------------
+
+\section{Pemodelan Sistem}
+\subsection{Pendahuluan}
+\begin{frame}
+	\frametitle{Pemodelan Sistem}
+	\begin{itemize}
+		\item Pemodelan sistem: memformulasikan representasi sederhana dari sistem yang ada $\rightarrow$ agar dapat melihat sistem tanpa perlu mengimplementasikannya.
+		\item Beberapa parameter dapat diberikan ke dalam model untuk mempelajari perilaku sistem.
+		\item Setelah sistem telah dipelajari dengan baik $\rightarrow$ mengimplementasikan sistem.
+		\item Pemodelan sistem membutuhkan asumsi-asumsi sederhana $\rightarrow$ model lebih jelas dan lebih mudah diimplementasikan.
+		\item Asumsi yang berlebihan $\rightarrow$ representasi sistem tidak akurat.
+		\item Ada 2 pendekatan dalam pemodelan sistem: pendekatan analitik dan pendekatan simulasi.
+	\end{itemize}
+\end{frame}
+
+\subsection{Pendekatan Analitik}
+\begin{frame}
+	\frametitle{Pendekatan Analitik}
+	\begin{itemize}
+		\item Pendekatan analitik: mencari cara agar dapat menggambarkan sistem secara matematis.
+		\item Menerapkan metode numerik untuk mendapatkan model matematis tsb.
+		\item Biasanya menggunakan teori probabilitas dan queuing.
+		\item Modelnya akan benar selama kondisi yang mendasari persamaan tersebut masih ada dan tetap.
+	\end{itemize}
+\end{frame}
+
+\subsection{Pendekatan Simulasi}
+\begin{frame}
+	\frametitle{Pendekatan Simulasi}
+	\begin{itemize}
+		\item Menciptakan kembali real-world scenario menggunakan suatu program komputer.
+		\item Membutuhkan lebih sedikit asumsi penyederhanaan yang sedikit, karena hampir setiap detail spesifikasi dapat dimasukkan ke dalam model simulasi.
+		\item Jika sistemnya sangat besar dan kompleks, maka pendekatan analitik menjadi tidak layak.
+		\item Solusinya menggunakan pendekatan simulasi.
+		\item Simulasi:
+		\begin{enumerate}
+			\item planning,
+			\item implementating (initialization, result generation, postsimulation processing),
+			\item testing.
+		\end{enumerate}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Software Network Simulation}
+	\begin{enumerate}
+		\item NS2 / The Network Simulator
+		\item GNS3 / Graphical Network Simulator
+		\item Cisco Packet Tracer
+		\item Huawei Network Tracer
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=\linewidth]{../../img/thank_you}
+	\end{center}
+\end{frame}
+
 
 \end{document}
