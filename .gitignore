@@ -6,3 +6,5 @@ referensi/*.pdf
 *.snm
 *.synctex.gz
 *.toc
+*.bin
+*.image
