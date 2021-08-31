@@ -8,3 +8,8 @@ referensi/*.pdf
 *.toc
 *.bin
 *.image
+*.bin
+*.image
+*.gns3a
+*.img.zip
+*.img
