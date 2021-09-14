@@ -13,3 +13,4 @@ referensi/*.pdf
 *.gns3a
 *.img.zip
 *.img
+slide/*/*.pdf
