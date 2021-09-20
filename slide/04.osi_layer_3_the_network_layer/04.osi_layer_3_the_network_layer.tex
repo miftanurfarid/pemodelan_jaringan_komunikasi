@@ -209,6 +209,267 @@
 	\end{itemize}	
 \end{frame}
 
+\begin{frame}
+	\frametitle{Static vs Automatic Addressing}
+	\begin{itemize}
+		\item The IP address is usually set manually on servers, printers and network devices such as routers and switches. It is usually assigned automatically through the Dynamic Host Configuration Protocol (DHCP) on desktop computers.
+		\item To understand how the logical separation between subnets works, you need to understand the IP address in binary.
+	\end{itemize}	
+\end{frame}
+
+\section{Calculating an IPv4 Address in Binary}
+
+\begin{frame}
+	\frametitle{IPv4 Address Octets}
+	\begin{itemize}
+		\item Each octet in the IP address has a value ranging from 0 to 255
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=0.9\linewidth]{img/img19}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Converting First Octet to Binary}
+	\begin{itemize}
+		\item Let’s convert that 192.168.10.15 address to binary, starting with the first octet of 192.
+		\item Write out the binary columns on a piece of paper to do this
+
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img20}
+		\end{center}
+	
+		\item 192 - 128 = 64
+		\item 64 - 64 = 0
+		\item The first octet is 11000000 in binary
+		\item 128 + 64 = 192
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Converting Second Octet to Binary}
+	\begin{itemize}
+		\item The second octet of 192.168.10.15 is 168
+		
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img21}
+		\end{center}
+		
+		\item 168 - 128 = 40
+		\item 40 - 64 doesn’t go
+		\item 40 - 32 = 8
+		\item 8 - 16 doesn’t go
+		\item 8 - 8 = 0
+		\item The second octet is 10101000 in binary
+		\item 128 + 32 + 8 = 168
+		\item The first half of the IP address in binary notation is 11000000.10101000
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Converting Decimal to Binary}
+	\begin{itemize}
+		\item Go ahead and stop the video and work out the last 2 octets if you’re new to converting IP addresses to binary
+		\item You should be able to show the complete IP address 192.168.10.15 in binary notation
+		\item 11000000.10101000.x.x
+		\item I’ll show you the answer on the next slide
+	\end{itemize}	
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conversion Answer}
+	\begin{itemize}
+		\item 192.168.10.15 = 11000000.10101000.00001010.00001111
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img22}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Subnet Masks}
+	\begin{itemize}
+		\item To set the boundary between logical networks (subnets), the IP address is combined with a subnet mask
+		\item You’ll learn about the subnet mask in the next lecture
+	\end{itemize}
+\end{frame}
+
+\section{The Subnet Mask}
+
+\begin{frame}
+	\frametitle{The Subnet Mask}
+	\begin{itemize}
+		\item A host can send traffic directly to another host on the same subnet via switches
+		\item For a host to send traffic to another host in a different subnet, it must be forwarded by a router
+		\item The host therefore needs to understand if the destination is on the same or a different subnet in order to know how to send it
+		\item The subnet mask is used for this
+		\item The subnet mask is also 32 bits long, and can be written in dotted decimal or slash notation
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Network and Host Portion}
+	\begin{itemize}
+		\item A host’s IP address is divided into a network portion and a host portion
+		\item The subnet mask defines where the boundary is
+		\item The easiest way to explain this is through example...
+		\item Let’s say the host’s IP address is 192.168.10.15 and its subnet mask is 255.255.255.0
+		\item We write the IP address out in binary notation, and then the subnet mask underneath
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Subnet 'Masking'}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img23}
+	\end{center}
+	\begin{itemize}
+		\item The IP address is compared ('masked') with the subnet mask
+		\item A '1' in the subnet mask indicates that bit in the IP address is part of the network address
+		\item A '0' indicates the bit is part of the host address
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Network Portion}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img24}
+	\end{center}
+	\begin{itemize}
+		\item In our example, the network address portion is 192.168.10
+		\item The host address portion is .15
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Local Subnet or Routed Traffic}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img25}
+	\end{center}
+	\begin{itemize}
+		\item If the host wants to communicate with another host with an IP address which also begins with 192.168.10. (for example 192.168.10.20), it knows it’s on the
+		same subnet and it can send the traffic directly
+		\item If it wants to communicate with another host with any other network address (for example 192.168.11.20), it knows it has to send the traffic via a router
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Local Subnet or Routed Traffic}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img26}
+	\end{center}
+	\begin{itemize}
+		\item For a destination address to be in the same subnet, the network portion has to be \textbf{exactly} 192.168.10.
+		\item Otherwise it's in a different subnet and traffic must be sent via a router
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Valid Subnet Masks}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img27}
+	\end{center}
+	\begin{itemize}
+		\item The subnet mask always begins with contiguous '1's
+		\item For example, 11111111.11110000.00000000.00000000 is a legal subnet mask
+		\item 11101101.11110000.11100000.00001111 is not
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Host Portion}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img28}
+	\end{center}
+	\begin{itemize}
+		\item The host portion of the address is available to be allocated to the different hosts on the subnet (eg PCs, Servers, Printers, Router Interfaces and Switch Management Addresses)
+		\item With two exceptions (coming up after the next slide)...
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Host Addresses}
+	\begin{itemize}
+		\item The host portion of the address specifies the individual host and must be unique on that subnet
+		\item Hosts do not have to be numbered sequentially
+		\item If the network portion of the address is 10.10.10, you can have a host with IP address 10.10.10.10 and another host with 10.10.10.20
+		\item You can’t have two different hosts both with IP address 10.10.10.10. That would be a duplicate IP address. Whenever another host sent traffic to 10.10.10.10, the network wouldn’t know which one to send it to.
+		\item We could have host 10.10.10.10 on one subnet and host 10.10.20.10 on another subnet
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Network Address (Network ID)}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img29}
+	\end{center}
+	\begin{itemize}
+		\item All 0's in the host portion designates the network address and is not allowed to be allocated to a host
+		\item In our example the network address is 192.168.10.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img30}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Broadcast Address}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img31}
+	\end{center}
+	\begin{itemize}
+		\item All 1's designates the directed broadcast address for the subnet
+		\item Traffic with this destination address will be sent to all hosts in the subnet
+		\item In our example the broadcast address is 192.168.10.255
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img32}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Host Addresses}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img33}
+	\end{center}
+	\begin{itemize}
+		\item That leaves 192.168.10.1 to 192.168.10.254 available to be allocated
+		to hosts
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img34}
+	\end{center}
+\end{frame}
+
+\section{Slash Notation}
+
 
 
 \end{document}
