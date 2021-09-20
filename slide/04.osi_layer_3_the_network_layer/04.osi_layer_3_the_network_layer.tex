@@ -460,8 +460,7 @@
 		\includegraphics[width=\linewidth]{img/img33}
 	\end{center}
 	\begin{itemize}
-		\item That leaves 192.168.10.1 to 192.168.10.254 available to be allocated
-		to hosts
+		\item That leaves 192.168.10.1 to 192.168.10.254 available to be allocated to hosts
 	\end{itemize}
 	\begin{center}
 		\includegraphics[width=\linewidth]{img/img34}
@@ -470,6 +469,46 @@
 
 \section{Slash Notation}
 
+\begin{frame}
+	\frametitle{Subnet Mask in Slash Notation}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img35}
+	\end{center}
+	\begin{itemize}
+		\item Because the subnet mask always begins with contiguous '1's, it will be 1 to 32 bits long counting from left to right
+		\item This allows us to write the subnet mask in slash notation which is more convenient than dotted decimal for network diagrams or in conversation
+	\end{itemize}
+\end{frame}
 
+\begin{frame}
+	\frametitle{Subnet Mask in Slash Notation}
+	\begin{itemize}
+		\item 192.168.10.15 / 255.255.255.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img36}
+	\end{center}
+	\begin{itemize}
+		\item Our example can be written as either 192.168.10.15 255.255.255.0 or 192.168.10.15/24
+		\item The network address is 192.168.10.0/24
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Subnet Mask in Slash Notation Example 2}
+	\begin{itemize}
+		\item 10.10.10.15 / 255.0.0.0
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img37}
+	\end{center}
+	\begin{itemize}
+		\item This example can be written as either 10.10.10.15 255.0.0.0 or 10.10.10.15/8
+		\item The network address is 10.0.0.0/8
+	\end{itemize}
+\end{frame}
 
 \end{document}
