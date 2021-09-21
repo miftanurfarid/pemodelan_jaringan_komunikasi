@@ -152,4 +152,36 @@
 	\end{center}
 \end{frame}
 
+\begin{frame}
+	\frametitle{TCP vs UDP}
+	\begin{itemize}
+		\item Application developers will typically choose to use TCP for traffic which requires reliability.
+		\item Real-time applications such as voice and video can't afford the extra overhead of TCP so they use UDP.
+		\item Some applications can use both TCP and UDP.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Common Applications and Their Destination Ports}
+	\begin{itemize}
+		\item TCP
+		\begin{itemize}
+			\item FTP (21)
+			\item SSH (22)
+			\item Telnet (23)
+			\item HTTP (80)
+			\item HTTPS (443)
+		\end{itemize}
+		\item UDP
+		\begin{itemize}
+			\item TFTP (69)
+			\item SNMP (161)
+		\end{itemize}
+		\item TCP and UDP
+		\begin{itemize}
+			\item DNS (53)
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
 \end{document}
