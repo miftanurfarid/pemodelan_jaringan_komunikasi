@@ -424,14 +424,100 @@
 	\frametitle{New York Sales Department}
 	\begin{itemize}
 		\item We’ve been allocated 200.15.10.0/24
-	\end{itemize}
-	\begin{itemize}
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img11}
+		\end{center}
 		\item /28 (or 255.255.255.240) supports 14 hosts
 		\item 200.15.10.0 to 200.15.10.63 are already in use by the Engineering departments, so this network address will start at 200.15.10.64
 		\item The network address goes up in values of 16, so the next one is 200.15.10.80
 		\item Our broadcast address is 200.15.10.79
 		\item Valid host addresses are 200.15.10.65 to 200.15.10.78
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Boston Sales Department}
+	\begin{itemize}
+		\item The next largest subnet is Boston Sales which requires 7 hosts.
+		\item Calculate the optimal subnet mask.
+		\item Also determine the network and broadcast addresses that we will allocate, and the range of host addresses.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Boston Sales Department}
+	\begin{itemize}
+		\item We’ve been allocated 200.15.10.0/24
+		\begin{center}
+			\includegraphics[width=0.9\linewidth]{img/img12}
+		\end{center}
+		\item /28 (or 255.255.255.240) supports 14 hosts
+		\item /29 does not support 8 hosts! Remember to subtract 2 for the network and broadcast address
+		\item 200.15.10.0 to 200.15.10.79 are already in use, so this network address will start at 200.15.10.80
+		\item The network address goes up in values of 16, so the next one is 200.15.10.96
+		\item Our broadcast address is 200.15.10.95
+		\item Valid host addresses are 200.15.10.81 to 200.15.10.94
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Subnetting}
+	\begin{itemize}
+		\item We’re done, right?
+		\item Not so fast, don’t forget the links between routers
+		\item You also need to allocate address space for your router loopback interfaces, we’ll talk about those later. (Not required in our example.)
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{New York to Boston Link}
+	\begin{itemize}
+		\item The last subnet is the link between the New York and Boston routers.
+		\item Calculate the optimal subnet mask.
+		\item Also determine the network and broadcast addresses that we will allocate, and the range of host addresses.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{New York to Boston Link}
+	\begin{itemize}
+		\item We’ve been allocated 200.15.10.0/24
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img12}
+		\end{center}
+		\item /30 (or 255.255.255.252) supports 2 hosts
+		\item 200.15.10.0 to 200.15.10.95 are already in use, so our network address will be 200.15.10.96
+		\item The network address goes up in values of 4, so the next one is 200.15.10.100
+		\item Our broadcast address is 200.15.10.99
+		\item Valid host addresses are 200.15.10.97 to 200.15.10.98
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Network Topology Diagram}
+	\begin{itemize}
+		\item Revisit the network topology diagram again on the next slide
+		\item Update the diagram with the IP addressing information for each subnet
+		\item Also enter the IP addresses on the router
+		\item The default gateway address should be the first available address in each subnet
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Network Topology Diagram}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img14}
+		We've been allocated the Class C network 200.15.10.0/24
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Network Topology Diagram}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img15}
+		We've been allocated the Class C network 200.15.10.0/24
+	\end{center}
 \end{frame}
 
 \end{document}
