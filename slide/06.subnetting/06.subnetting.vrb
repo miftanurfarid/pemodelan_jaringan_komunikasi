@@ -1,0 +1,10 @@
+\frametitle{A Quick Note on ip subnet-zero}
+	\begin{itemize}
+		\item Just like we have to subtract 2 to get the number of valid hosts, we used to have to subtract 2 to get the number of available networks also
+		\item In the original Internet standards, it was not allowed to use network bits of all 0's or all 1's (just like we can't use all host bits of all 0's or all 1's)
+		\item There wasn't really any practical need for this and it wasted address space
+		\item The ip \begin{lstlisting}
+		test
+		\end{lstlisting} subnet-zero command on a router overrides the limitation, and is enabled by default
+		
+	\end{itemize}
