@@ -112,4 +112,122 @@
 	\end{itemize}
 \end{frame}
 
+\section{IP Address Classes B and C}
+
+\begin{frame}
+	\frametitle{Class B}
+	\begin{itemize}
+		\item \textit{Class B} addresses are assigned to medium-sized to large-sized networks.
+		\item The two high-order bits in a class B address are always set to binary 1 0.
+		\item The default subnet mask is /16
+		\item Valid network addresses range from 128.0.0.0 to 191.255.0.0 /16
+		\item This allows for 16,384 networks and 65,534 hosts per network.
+		\item This would also be subnetted in a real world environment.
+	\end{itemize}
+	
+	\begin{center}
+		\includegraphics[width=1\linewidth]{img/img05}
+	\end{center}
+	\begin{itemize}
+		\item 131.192.0.0/16
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Class C}
+	\begin{itemize}
+		\item \textit{Class C} addresses are used for small networks.
+		\item The three high-order bits in a class C address are always set to binary 1 1 0.
+		\item The default subnet mask is /24
+		\item Valid network addresses range from 192.0.0.0 to 223.255.255.0 /24
+		\item This allows for 2,097,152 networks and 254 hosts per network.
+		\item This could be allocated as is for a real world network, or subnetted into smaller subnets.
+	\end{itemize}
+	
+	\begin{center}
+		\includegraphics[width=1\linewidth]{img/img06}
+	\end{center}
+
+	\begin{itemize}
+		\item 195.0.192.0/24
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{A Quick Note on Private Addresses}
+	\begin{itemize}
+		\item There is also a range of reserved Private Addresses in each class
+		\item These are valid to be assigned to hosts but they are not routable on the public internet
+		\item They were originally designed for hosts in a closed private network with no Internet connectivity
+		\item Class A: 10.0.0.0 to 10.255.255.255
+		\item Class B: 172.16.0.0 to 172.31.255.255
+		\item Class C: 192.168.0.0 to 192.168.255.255
+		\item Private addresses will be discussed in a later lecture in this section
+	\end{itemize}
+\end{frame}
+
+\section{IP Address Classes D and E}
+
+\begin{frame}
+	\frametitle{Address Classes}
+	\begin{itemize}
+		\item Classes A, B and C include all the addresses which are valid to be assigned to hosts
+		\item What about 224.0.0.0 to 255.255.255.255?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Class D}
+	\begin{itemize}
+		\item Class D addresses are reserved for IP multicast addresses.
+		\item The four high-order bits in a class D address are always set to binary 1 1 1 0.
+		\item These addresses are not allocated to hosts and there is no default subnet mask
+		\item Valid addresses range from 224.0.0.0 to 239.255.255.255
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{img/img07}
+	\end{center}
+	\begin{itemize}
+		\item 227.1.192.5
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unicast Traffic}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{img/img08}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Multicast Traffic}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{img/img09}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Class E}
+	\begin{itemize}
+		\item \textit{Class E} addresses are ‘experimental and reserved for future use’.
+		\item The high-order bits in a class E address are set to 1111
+		\item These addresses are not allocated to hosts and there is no default subnet mask
+		\item Addresses range from 240.0.0.0 to 255.255.255.255
+		\item 255.255.255.255 is the broadcast address for ‘this network’
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{img/img10}
+	\end{center}
+	\begin{itemize}
+		\item 243.1.192.10
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{IP Address Class Summary}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{img/img11}
+	\end{center}
+\end{frame}
+
 \end{document}
