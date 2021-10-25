@@ -516,8 +516,366 @@
 	\frametitle{Network Topology Diagram}
 	\begin{center}
 		\includegraphics[width=\linewidth]{img/img15}
-		We've been allocated the Class C network 200.15.10.0/24
 	\end{center}
 \end{frame}
+
+\section{Subnetting Large Networks Part 1}
+
+\begin{frame}
+	\frametitle{Subnetting Large Networks}
+	\begin{itemize}
+		\item Let’s say we’ve been allocated Class B 135.15.0.0/16
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img16}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example 1 – Class B on 4th Octet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img17}
+	\end{center}
+	\begin{itemize}
+		\item If we subnet this into /29 subnets, we have 3 bits for host addressing.
+		\item This allows 6 hosts per network ($ 2^3 - 2 $) , the same as if we used /29 with a Class C address.
+		\item Because we were allocated a Class B /16 address range, we have 13 bits for network addresses
+		\item This allows 8192 subnets ($ 2^13 $)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example 1 – Class B on 4th Octet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img18}
+	\end{center}
+	\begin{itemize}
+		\item<1-> For the IP address 135.15.10.138/29, what is the network address, broadcast address, and range of valid IP addresses?
+		\item<2-> The line is after the 8, so the network address goes up in multiples of 8
+		\item<2-> Network address = 135.15.10.136
+		\item<2-> Next network address = 135.15.10.144
+		\item<2-> Broadcast address = 135.15.10.143
+		\item<2-> Valid host addresses = 135.15.10.137 to 142
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Magic Number Method – Example 1}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img18}
+	\end{center}
+	\begin{itemize}
+		\item For the IP address 135.15.10.138/29, what is the network address, broadcast address, and range of valid IP addresses?
+		\item The subnet mask is 255.255.255.248
+		\item Subtract the value in the subnetted octet from 256: 256 - 248 = 8
+		\item The network address goes up in multiples of 8
+		\item Network address = 135.15.10.136
+		\item Next network address = 135.15.10.144
+		\item Broadcast address = 135.15.10.143
+		\item Valid host addresses = 135.15.10.137 to 142
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example 2A – Class A on 4th Octet}
+	\begin{itemize}
+		\item For this example we’re allocated Class A 60.0.0.0/8
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img19}
+	\end{center}
+	\begin{itemize}
+		\item If we apply the subnet mask 255.255.255.240, how many subnets do we have and how many hosts per subnet?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example 2A – Class A on 4th Octet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img20}
+	\end{center}
+	\begin{itemize}
+		\item 255.255.255.240 subnet mask is /28
+		\item 14 hosts per network ($ 2^4 - 2 $)
+		\item Because we were allocated a Class A /8 address range, we have 20 bits for network addresses
+		\item This allows 1,048,576 subnets ($ 2^{20} $ )
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example 2B – Class A on 4th Octet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img21}
+	\end{center}
+	\begin{itemize}
+		\item<1-> For the IP address 60.15.10.75/28, what is the network address, broadcast address, and range of valid IP addresses?
+		\item<2-> The line is after the 16, so the network address goes up in multiples of 16
+		\item<2-> Network address = 60.15.10.64
+		\item<2-> Next network address = 60.15.10.80
+		\item<2-> Broadcast address = 60.15.10.79
+		\item<2-> Valid host addresses = 60.15.10.65 to 78
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Magic Number Method – Example 2B}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img21}
+	\end{center}
+	\begin{itemize}
+		\item For the IP address 60.15.10.75/28, what is the network address, broadcast address, and range of valid IP addresses?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Magic Number Method – Example 2B}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img21}
+	\end{center}
+	\begin{itemize}
+		\item The subnet mask is 255.255.255.240
+		\item Subtract the value in the subnetted octect from 256: 256 - 240 = 16
+		\item The network address goes up in multiples of 16
+		\item Network address = 60.15.10.64
+		\item Next network address = 60.15.10.80
+		\item Broadcast address = 60.15.10.79
+		\item Valid host addresses = 60.15.10.65 to 78
+	\end{itemize}
+\end{frame}
+
+\section{Subnetting Large Networks Part 2}
+
+\begin{frame}
+	\frametitle{Example 3A – Class A on 3rd Octet}
+	\begin{itemize}
+		\item For this example we’re allocated Class A 60.0.0.0/8
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img22}
+	\end{center}
+	\begin{itemize}
+		\item If we subnet this into /19 networks, how many subnets do we have and how many hosts per subnet?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Example 3A – Class A on 3rd Octet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img23}
+	\end{center}
+	\begin{itemize}
+		\item 8190 hosts per network ($ 2{13} - 2 $)
+		\item Because we were allocated a Class A /8 address range, we have 11 bits for network addresses
+		\item This allows 2048 subnets ($ 2^{11} $)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example 3B – Class A on 3rd Octet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img24}
+	\end{center}
+	\begin{itemize}
+		\item<1-> For the IP address 60.15.10.75/19, what is the network address, broadcast address, and range of valid IP addresses?
+		\item<2-> We’re subnetting on the third octet
+		\item<2-> The line is after the 32, so the network address goes up in multiples of 32
+		\item<2-> Network address = 60.15.0.0
+		\item<2-> Next network address = 60.15.32.0
+		\item<2-> Broadcast address = 60.15.31.255
+		\item<2-> Valid host addresses = 60.15.0.1 to 60.15.31.254
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Magic Number Method – Example 3B}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img25}
+	\end{center}
+	\begin{itemize}
+		\item For the IP address 60.15.10.75/19, what is the network address, broadcast address, and range of valid IP addresses?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{The Magic Number Method – Example 3B}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img25}
+	\end{center}
+	\begin{itemize}
+		\item The subnet mask is 255.255.224.0
+		\item Subtract the value in the subnetted octect from 256: 256 - 224 = 32
+		\item The network address goes up in multiples of 32
+		\item Network address = 60.15.0.0
+		\item Next network address = 60.15.32.0
+		\item Broadcast address = 60.15.31.255
+		\item Valid host addresses = 60.15.0.1 to 60.15.31.254
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Subnetting Large Networks – Example 4}
+	\begin{itemize}
+		\item You have been asked to subnet the 134.65.0.0 network into six different networks.
+		\item What subnet mask do you use?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Example 4 – Class B on 3rd Octet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img26}
+	\end{center}
+	\begin{itemize}
+		\item 134.65.0.0 is a Class B network so we’ll be subnetting on the third octet to get 6 subnets
+		\item 3 bits would provide 8 subnets ($ 2^3 $)
+		\item So the answer is /19 or 255.255.224.0
+		\item Network addresses would be 134.65.0.0, 134.65.32.0, 134.65.64.0 etc.
+		\item 8190 hosts in each subnet ($ 2^{13-2} $)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Subnetting Question Categories}
+	\begin{itemize}
+		\item Given a network requirement of '$ x $' amount of subnets and '$ y $' amount of hosts per subnet, what network address and subnet mask should be used for each subnet?
+		\item Given a particular IP address and subnet mask, calculate:
+		\begin{itemize}
+			\item The subnet’s network address
+			\item The broadcast address
+			\item The range of valid host IP addresses
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Private IP Addresses Part 1}
+
+\begin{frame}
+	\frametitle{RFC 1918 Private Addresses}
+	\begin{itemize}
+		\item The Internet Engineering Task Force (IETF) documents standards with RFC’s (Requests For Comments)
+		\item RFC 1918 specifies private IP address ranges which are not routable on the public internet
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{RFC 1918 Private Addresses}
+	\begin{itemize}
+		\item Sticking with our theme of 'how IP addressing was meant to work', these addresses were originally designed for hosts which should have no internet connectivity
+		\item Public IP addresses cost money.
+		\item If an organisation has a part of their network where the hosts need to communicate with each other over IP, but do not require connectivity to the Internet, they can assign private IP addresses.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{RFC 1918 Private Addresses}
+	\begin{itemize}
+		\item There is a range of private addresses in each address class.
+		\item 10.0.0.0 - 10.255.255.255
+		\begin{itemize}
+			\item 10.0.0.0/8
+			\item 10.0.0.0 255.0.0.0
+		\end{itemize}
+		\item 172.16.0.0 - 172.31.255.255
+		\begin{itemize}
+			\item 172.16.0.0/12
+			\item 172.16.0.0 255.240.0.0
+		\end{itemize}
+		\item 192.168.0.0 - 192.168.255.255
+		\begin{itemize}
+			\item 192.168.0.0/16
+			\item 192.168.0.0 255.255.0.0
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{RFC 1918 Example 1}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img27}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{RFC 1918 Example 2}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img28}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The IPv4 Global Address Space Problem}
+	\begin{itemize}
+		\item The designers of IPv4 did not envision the explosive growth of its use
+		\item 4.3 billion addresses seemed more than enough
+		\item The protocol is not particularly efficient in its use of the available space, with many addresses being wasted
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{IPv6}
+	\begin{itemize}
+		\item The Internet authorities started to predict address exhaustion in the late 1980’s, and IPv6 was developed in the 90’s as the long term solution
+		\item IPv6 uses a 128 bit address, compared to IPv4’s 32 bit address
+		\item IPv6 provides more than 7.9×10 28 times as many addresses as IPv4
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The IPv6 Problem and NAT}
+	\begin{itemize}
+		\item There is not a seamless migration path from IPv4 to IPv6
+		\item NAT (Network Address Translation) was implemented as a temporary workaround to mitigate the lack of IPv4 addresses until organisations had time to migrate to IPv6
+		\item An organisation can use private IP addresses on their inside network, but still grant their hosts Internet access by translating them to their outside public IP address
+		\item Many hosts on the inside can share a few or a single public IP address on the outside
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Private Addresses and NAT}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img29}
+	\end{center}
+\end{frame}
+
+\section{Private IP Addresses Part 2}
+
+\begin{frame}
+	\frametitle{Today’s Networks}
+	\begin{itemize}
+		\item Many industry experts predicted in the early 2000’s that IPv6 would be ubiquitous within a few years
+		\item It hasn’t worked out that way – most enterprises today use RFC 1918 IPv4 addresses with NAT
+		\item RFC 1918 has the security benefit of hiding inside hosts by default (they don’t have a publicly routable IP address), plus network engineers have more experience with IPv4 than v6
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Today’s Networks}
+	\begin{itemize}
+		\item IPv6 is mostly found in service provider networks, mobile services, and large countries with later Internet adoption such as India and China
+		\item Spare public IPv4 addresses were exhausted in 2011 so IPv6 is still the future path
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Today’s Networks}
+	\begin{itemize}
+		\item You still need to understand subnetting - modern enterprises subnet their RFC 1918 addresses to optimise performance and security
+		\item You also need to understand and be able to troubleshoot IP
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Today’s Networks}
+	\begin{itemize}
+		\item Because they have the entire private IP address space to work with, it’s common to see /24 subnets being used for end hosts, /30 for point to point links, and /32 for loopbacks
+		\item Complex VLSM is more common in enterprises which use public IP addresses on their inside networks and need to maximise their use
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Contiguous Addresses and Route Summarisation}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img30}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Non-Contiguous Addresses}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img31}
+	\end{center}
+\end{frame}
+
+\section{Where to Get More Subnetting Practice}
 
 \end{document}
