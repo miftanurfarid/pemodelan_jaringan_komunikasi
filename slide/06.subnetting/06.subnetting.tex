@@ -484,7 +484,7 @@
 	\begin{itemize}
 		\item We’ve been allocated 200.15.10.0/24
 		\begin{center}
-			\includegraphics[width=\linewidth]{img/img12}
+			\includegraphics[width=\linewidth]{img/img13}
 		\end{center}
 		\item /30 (or 255.255.255.252) supports 2 hosts
 		\item 200.15.10.0 to 200.15.10.95 are already in use, so our network address will be 200.15.10.96
@@ -540,7 +540,7 @@
 		\item If we subnet this into /29 subnets, we have 3 bits for host addressing.
 		\item This allows 6 hosts per network ($ 2^3 - 2 $) , the same as if we used /29 with a Class C address.
 		\item Because we were allocated a Class B /16 address range, we have 13 bits for network addresses
-		\item This allows 8192 subnets ($ 2^13 $)
+		\item This allows 8192 subnets ($ 2^{13} $)
 	\end{itemize}
 \end{frame}
 
@@ -559,12 +559,21 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{The Magic Number Method – Example 1}
+	\frametitle{The Magic Number Method\\ - Example 1}
 	\begin{center}
 		\includegraphics[width=\linewidth]{img/img18}
 	\end{center}
 	\begin{itemize}
 		\item For the IP address 135.15.10.138/29, what is the network address, broadcast address, and range of valid IP addresses?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Magic Number Method\\ - Example 1}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img18}
+	\end{center}
+	\begin{itemize}
 		\item The subnet mask is 255.255.255.248
 		\item Subtract the value in the subnetted octet from 256: 256 - 248 = 8
 		\item The network address goes up in multiples of 8
@@ -616,7 +625,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{The Magic Number Method – Example 2B}
+	\frametitle{The Magic Number Method\\ - Example 2B}
 	\begin{center}
 		\includegraphics[width=\linewidth]{img/img21}
 	\end{center}
@@ -625,7 +634,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{The Magic Number Method – Example 2B}
+\begin{frame}{The Magic Number Method\\ - Example 2B}
 	\begin{center}
 		\includegraphics[width=\linewidth]{img/img21}
 	\end{center}
@@ -683,7 +692,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{The Magic Number Method – Example 3B}
+	\frametitle{The Magic Number Method\\ - Example 3B}
 	\begin{center}
 		\includegraphics[width=\linewidth]{img/img25}
 	\end{center}
@@ -692,7 +701,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{The Magic Number Method – Example 3B}
+\begin{frame}{The Magic Number Method\\ - Example 3B}
 	\begin{center}
 		\includegraphics[width=\linewidth]{img/img25}
 	\end{center}
@@ -708,7 +717,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Subnetting Large Networks – Example 4}
+	\frametitle{Subnetting Large Networks\\ - Example 4}
 	\begin{itemize}
 		\item You have been asked to subnet the 134.65.0.0 network into six different networks.
 		\item What subnet mask do you use?
@@ -877,5 +886,16 @@
 \end{frame}
 
 \section{Where to Get More Subnetting Practice}
+
+\begin{frame}
+	\frametitle{Sites with Free Subnetting Practice Questions}
+	\begin{itemize}
+		\item http://www.subnettingquestions.com/ \href{http://www.subnettingquestions.com/}{\beamergotobutton{Link}}
+		\item http://www.subnetting.org/ \href{http://www.subnetting.org/}{\beamergotobutton{Link}}
+		\item[]
+		\item To check your answers, Google for ‘IP Subnet Calculator’
+	\end{itemize}
+\end{frame}
+
 
 \end{document}
