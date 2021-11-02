@@ -5,3 +5,5 @@
 2. [Pertemuan 2 - Host-to-Host Communication dan Internetwork Operating System (IOS)](https://drive.google.com/file/d/1qA9g9bo-etbnfHhHOU8sLzklMPlffu8k/view?usp=sharing)
 
 3. [Pertemuan 3 - Transport Layer (Layer 4) dan Network Layer (Layer 3)](https://drive.google.com/file/d/1O7e5dUN1HjnoSxOaTidH6RtgSKVCcmKK/view?usp=sharing)
+
+4. [Pertemuan 4 - IP Address Classes dan Subnetting](https://drive.google.com/file/d/16EPPAnSZAwWqQEjjZJlNcclIs5rmkudg/view?usp=sharing)
