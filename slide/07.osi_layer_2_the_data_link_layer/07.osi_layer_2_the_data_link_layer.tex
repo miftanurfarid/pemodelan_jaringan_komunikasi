@@ -3,127 +3,67 @@
 %\usetheme[dark,framenumber,totalframenumber]{ElektroITK}
 \usetheme[darktitle,framenumber,totalframenumber]{ElektroITK}
 
-\usepackage{lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[bahasai]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{multicol}
 
-\title{METODE NUMERIK}
-\subtitle{Deret Taylor dan Analisis Galat}
+\title{PEMODELAN JARINGAN KOMUNIKASI}
+\subtitle{OSI Layer 2 - The Data Link Layer}
 
 \author{Tim Dosen Pengampu}
 
 \begin{document}
 
-% ----------------------------------------------------------------------------
-% *** Titlepage <<<
-% ----------------------------------------------------------------------------
 \maketitle
-% ----------------------------------------------------------------------------
-% *** END of Titlepage >>>
-% ----------------------------------------------------------------------------
 
-\section{My section}
-\subsection{My subsection}
-
-% ----------------------------------------------------------------------------
-% *** Test frame <<<
-% ----------------------------------------------------------------------------
 \begin{frame}
-\frametitle{A first test frame}
-\lipsum[1]
+	\frametitle{Layer 2 – The Data Link Layer}
+	\begin{itemize}
+		\item Frames are encoded and decoded into bits at Layer 2.
+		\item Error detection and correction for the Physical Layer can be provided here.
+		\item Ethernet is the Layer 2 medium used on Local Area Networks.
+		\item List of network protocol (OSI Model) \href{https://en.wikipedia.org/wiki/List_of_network_protocols_(OSI_model)}{\beamergotobutton{Link}} 
+	\end{itemize}
 \end{frame}
-% ----------------------------------------------------------------------------
-% *** END of Test frame >>>
-% ----------------------------------------------------------------------------
 
-% ----------------------------------------------------------------------------
-% *** Test frame with overflow <<<
-% ----------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Test frame with overflow}
-\lipsum%
+	\frametitle{OSI Reference Model - Encapsulation}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img01}
+	\end{center}
 \end{frame}
-% ----------------------------------------------------------------------------
-% *** END of Test frame >>>
-% ----------------------------------------------------------------------------
 
-
-% ----------------------------------------------------------------------------
-% *** Test frame with overflow <<<
-% ----------------------------------------------------------------------------
-%\begin{frame}
-%\frametitle{The is a test frame with a pretty long frame title}
-%\lipsum
-%\end{frame}
-% ----------------------------------------------------------------------------
-% *** END of Test frame >>>
-% ----------------------------------------------------------------------------
-
-\subsection{My subsection 2}
-% ----------------------------------------------------------------------------
-% *** Test frame with Itemize <<<
-% ----------------------------------------------------------------------------
 \begin{frame}
-\frametitle{Test frame with itemize}
-
-\begin{itemize}
-    \item<1-> firstly
-    \item<2-> secondly
-        \begin{itemize}
-            \item sub-item
-            \item another sub-item
-        \end{itemize}
-      \item<3-> thirdly
-\end{itemize}
-
+	\frametitle{The Ethernet Header}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img02}
+	\end{center}
+	FCS = Frame Check Sequence
 \end{frame}
-% ----------------------------------------------------------------------------
-% *** END of Test frame with Itemize >>>
-% ----------------------------------------------------------------------------
 
-
-% ----------------------------------------------------------------------------
-% *** Test frame with Math <<<
-% ----------------------------------------------------------------------------
 \begin{frame}
-\frametitle{A math frame}
-
-\begin{theorem}[Pythagoras]
-The square of the hypotenuse of a \alert{right} triangle is equal to the sum of the squares on the other two sides:
-\[
-a^2 + b^2 = c^2.
-\]
-\end{theorem}
-\begin{proof}
-Straightforward.
-\end{proof}
-
+	\frametitle{The Media Access Control\\ MAC Address}
+	\begin{itemize}
+		\item Ethernet uses a 48-bit hexadecimal MAC Address.
+		\item The first 24 bits is the OUI (Organizationally Unique Identifier) which uniquely identifies the manufacturer of the Ethernet port. The OUI is assigned by the IEEE.
+		\item The last 24 bits is vendor assigned.
+		\item The burned in MAC address on every NIC port in the world is globally unique.
+		\item Example - 00:50:56:C0:00:08
+		\begin{multicols}{2}
+			\begin{center}
+				\includegraphics[width=0.8\linewidth]{img/img03}
+			\end{center}
+			\columnbreak
+			The 48-bit address space contains potentially $ 2^48 $ or \textbf{281,474,976,710,656}
+			possible MAC addresses.
+		\end{multicols}
+	\end{itemize}
 \end{frame}
-% ----------------------------------------------------------------------------
-% *** END of Test frame with Math >>>
-% ----------------------------------------------------------------------------
-
-
-% ----------------------------------------------------------------------------
-% *** Test frame with Environments <<<
-% ----------------------------------------------------------------------------
-\begin{frame}
-\frametitle{Environments}
-
-\begin{definition}
-A \textbf{prime number} (or a prime) is a natural number which has exactly two distinct natural number divisors: 1 and itself.
-\end{definition}
-
-\begin{exampleblock}{Example}
-The first five prime numbers are $2$, $3$, $5$, $7$, and $11$.
-\end{exampleblock}
-
-\begin{alertblock}{Alert block}
-Note that $1$ is not a prime number.
-\end{alertblock}
-
-\end{frame}
-% ----------------------------------------------------------------------------
-% *** END of Test frame with Environments >>>
-% ----------------------------------------------------------------------------
-
 
 \end{document}
