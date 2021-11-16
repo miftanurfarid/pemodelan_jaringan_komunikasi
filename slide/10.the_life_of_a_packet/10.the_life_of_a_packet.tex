@@ -136,6 +136,35 @@
 	\end{center}
 \end{frame}
 
+\begin{frame}
+	\frametitle{IP to MAC Address Resolution}
+	\begin{itemize}
+		\item The sender needs to know the receiver’s IP address and MAC address to form the packet it’s going to send
+		\item We can point the sender directly at the destination IP address or at a user friendly FQDN such as www.cisco.com
+		\item DNS Domain Name System maintains a mapping of FQDNs to IP addresses
+		\item ARP Address Resolution Protocol is used to map the IP address to MAC address
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{ARP Address Resolution Protocol}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img07}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Host ARP Commands}
+	\begin{itemize}
+		\item ARP replies are saved in a hosts ARP cache so it doesn’t need to send an ARP request every time it wants to communicate
+		\item \textbf{Windows}
+		\item[] View ARP cache: \texttt{arp -a}
+		\item[] Clear ARP cache: \texttt{netsh interface ip delete} arpcache
+		\item \textbf{Linux}
+		\item[] View ARP cache: \texttt{arp -n}
+		\item[] Clear ARP cache: \texttt{ip -s -s neigh flush all}
+	\end{itemize}
+\end{frame}
 
 
 \end{document}
