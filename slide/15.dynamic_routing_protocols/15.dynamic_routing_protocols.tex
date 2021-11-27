@@ -196,6 +196,178 @@
 
 \section{Routing Protocol Metrics}
 
+\begin{frame}
+	\frametitle{Metric}
+	\begin{itemize}
+		\item A router may receive multiple possible paths to get to a destinationnetwork
+		\item Only the best path will make it into the routing table and be used
+		\item The different IGPs use different methods to calculate the best path to adestination network
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Metric}
+	\begin{itemize}
+		\item Each possible path will be assigned a ‘metric’ value by the routingprotocol which indicates how preferred the path is
+		\item The lowest metric value is preferred
+		\item Distance Vector routers advertise to each other the networks they knowabout, and their metric to get to each of them
+		\item Link State routers advertise all the links in their area of the network toeach other
+		\item Each router will take this information and then make an independentcalculation of its own best path to get to each destination
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Metric}
+	\begin{itemize}
+		\item If the best path to a destination is lost (for example because a link wentdown) it will be removed from the routing table and replaced with thenext best route
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{RIP Metric – Hop Count}
+	\begin{itemize}
+		\item RIP uses Hop Count as the metric
+		\item The maximum hop count by default is 15. Paths which are more than 15hops away are marked as unreachable
+		\item Path R4>5>1 will be preferred for 10.0.1.0/24 in the example below
+		\item RIP is typically used only in small or test environments
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img09}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RIP Metric – Hop Count}
+	\begin{itemize}
+		\item RIP uses Hop Count as the metric
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img10}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RIP Metric – Hop Count}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img11}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RIP Metric – Hop Count}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img12}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RIP Metric – Hop Count}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img13}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RIP Metric – Hop Count}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img14}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RIP Metric – Hop Count}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img15}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RIP Metric – Hop Count}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img16}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RIP Metric – Hop Count}
+	R4: I learned 2 possible routes to get to the 10.0.1.0/24 network:\\
+	3 hops via 10.1.1.2 out FE0/0\\
+	2 hops via 10.1.3.2 out F2/0\\
+	I’ll put the best one in my routing table\\
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img17}
+	\end{center}
+\end{frame}
+
+\begin{frame}{RIP Metric – Hop Count}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img18}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{OSPF Metric – Cost}
+	\begin{itemize}
+		\item OSPF uses ‘Cost’ as the metric, which is automatically derived frominterface bandwidth by default
+		\item You can manually configure the cost of links if you want to manipulatethe path
+		\item Path R4>3>2>1 will be preferred for 10.0.1.0/24 in the example below
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img19}
+	\end{center}
+\end{frame}
+
+\begin{frame}{OSPF Metric – Cost}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img20}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{IS-IS Metric – Cost}
+	\begin{itemize}
+		\item IS-IS also uses 'Cost' as the metric, but it is not automatically derived from interface bandwidth. All links have an equal cost by default
+		\item You can manually configure the cost of links if you want to manipulate the path
+		\item If you do not manually set the link costs then the path with the lowest hopcount will be used
+		\item Path R4>5>1 will be preferred for 10.0.1.0/24 in the example below
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{IS-IS Metric – Cost}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img21}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{EIGRP Metric}
+	\begin{itemize}
+		\item EIGRP uses the bandwidth and delay of links to calculate the metric
+		\item (Load and reliability can also be considered but are ignored by default)
+		\item A fixed delay value is used based on the interface bandwidth, the protocol doesnot dynamically measure current delay
+		\item You can manually configure the delay on links if you want to manipulate the path
+		\item Path R4>3>2>1 will be preferred for 10.0.1.0/24 in the example below
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{EIGRP Metric}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img22}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Choosing a Routing Protocol}
+	\begin{itemize}
+		\item RIP uses hop count and has a default maximum metric of 15. It is notusually used in production networks because of its scalability limitations.
+		\item EIGRP is very simple to maintain, calculates changes very quickly and itsmetric calculation will normally choose the best path by default. It istypically only supported on Cisco routers however.
+		\item OSPF’s metric calculation will typically choose the best path by default. Itis an open standard which is supported by all vendor’s routers and is themost commonly deployed IGP today. It is however more complicated tomaintain than EIGRP.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Choosing a Routing Protocol}
+	\begin{itemize}
+		\item IS-IS links need to be manually configured or it will use hop count todetermine the best path. It is typically only used in Service Providernetworks or large organisations with their own MPLS network whochoose it because of its scalability.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lab}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img23}
+	\end{center}
+\end{frame}
+
 \section{Equal Cost Multi Path}
 
 \section{Administrative Distance}
