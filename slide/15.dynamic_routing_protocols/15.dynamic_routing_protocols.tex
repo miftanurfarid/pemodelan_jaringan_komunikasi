@@ -591,21 +591,102 @@
 
 \section{Adjacencies and Passive Interfaces}
 
+\begin{frame}
+	\frametitle{Adjacencies}
+	\begin{itemize}
+		\item IGP routing protocols are configured under global configuration modeand then enabled on individual interfaces
+		\item When the routing protocol is enabled on an interface the router will lookfor other devices on the link which are also running the routing protocol
+		\item The router does this by sending out and listening for hello packets
+		\item When a matching peer is found, the routers will form an adjacency witheach other
+		\item They will then exchange routing information
+	\end{itemize}
+\end{frame}
 
+\begin{frame}{Adjacencies}
+	\begin{itemize}
+		\item Modern routing protocols use multicast for the hello packets
+		\item This is more efficient than broadcast which was used by earlier protocols
+		\item Only routers which are running the same routing protocol will processthe packet
+	\end{itemize}
+\end{frame}
 
+\begin{frame}
+	\frametitle{Adjacency Example}
+	\begin{itemize}
+		\item The IP subnets configured on the interfaces which are enabled for therouting protocol will be included in its updates
+		\item For example, R1 has a routing protocol enabled on the Loopback0interface and FastEthernet0/0 and 1/0
+		\item The routing protocol is not enabled on FastEthernet2/0
+		\item RC belongs to a partner organisation we do not want to send internalnetwork information to
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{img/img36}
+	\end{center}
+\end{frame}
 
+\begin{frame}{Adjacency Example}
+	\begin{itemize}
+		\item R1 will send out and listen for hello packets on the Loopback0 interfaceand FastEthernet0/0 and 1/0
+		\item It will form adjacencies with any routers running the same protocol onthose links – RA and RB
+		\item It will not send out or listen for hello packets on FastEthernet2/0
+		\item It will not form an adjacency with RC
+		\item (We will use static routes for the extranet traffic with RC)
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{img/img37}
+	\end{center}
+\end{frame}
 
+\begin{frame}{Adjacency Example}
+	\begin{itemize}
+		\item R1 will advertise IP subnets to RA and RB:\\
+		10.0.0.0/24\\
+		10.0.1.0/24\\
+		192.168.1.1/32
+		\item It will not advertise 10.0.2.0/24
+		\item RA and RB will not learn routes to 10.0.2.0/24
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{img/img38}
+	\end{center}
+\end{frame}
 
+\begin{frame}
+	\frametitle{Passive Interfaces}
+	\begin{itemize}
+		\item Passive interfaces allow you to include an IP subnet in the routingprotocol without sending updates out of the interface
+		\item If FastEthernet2/0 is configured as a passive interface, RA and RB willlearn routes to 10.0.2.0, but internal network information will not besent to RC
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{img/img39}
+	\end{center}
+\end{frame}
 
+\begin{frame}{Passive Interfaces}
+	\begin{itemize}
+		\item It is best practice to configure loopback interfaces as passive interfaces
+		\item It is impossible to form an adjacency on a loopback interface becausethey are not physical interfaces
+		\item Making the loopback passive means that it will be advertised by therouting protocol but it will not waste resources sending out and listeningfor hello packets
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{img/img40}
+	\end{center}
+\end{frame}
 
+\begin{frame}{Passive Interfaces}
+	\begin{itemize}
+		\item Passive interfaces are used on:
+		\begin{itemize}
+			\item Loopback interfaces
+			\item Physical interfaces where the device on the other side belongs toanother organisation. We do not want to send routing informationout but we do want our internal devices to know about the link
+		\end{itemize}
+	\end{itemize}
+\end{frame}
 
-
-
-
-
-
-
-
-
+\begin{frame}
+	\frametitle{Lab}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img41}
+	\end{center}
+\end{frame}
 
 \end{document}
