@@ -128,4 +128,74 @@
 
 \section{Summarisation and Default Routes}
 
+\begin{frame}
+	\frametitle{Static Routes}
+	\begin{itemize}
+		\item Routes on R1:
+		\begin{itemize}
+			\item[] \texttt{ip route 10.1.0.0 255.255.255.0 10.0.0.2}
+			\item[] \texttt{ip route 10.1.1.0 255.255.255.0 10.0.0.2}
+			\item[] \texttt{ip route 10.1.2.0 255.255.255.0 10.0.0.2}
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img06}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Summary Routes}
+	\begin{itemize}
+		\item For static routing, summary routes lessen administrative overhead and memory usage on the routers
+		\item Routes on R1:
+		\begin{itemize}
+			\item[] \texttt{ip route 10.1.0.0 255.255.0.0 10.0.0.2}
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img07}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Summary Routes}
+	\begin{itemize}
+		\item Summarisation doesn’t have to be on classful boundaries
+		\item To summarise the range 10.1.0.0 to 10.1.3.0:
+		\begin{itemize}
+			\item[] \texttt{ip route 10.1.0.0 255.255.252.0 10.0.0.2}
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img08}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Longest Prefix Match}
+	\begin{itemize}
+		\item When there are overlapping routes, the longest prefix will be selected
+		\begin{itemize}
+			\item[] \texttt{ip route 10.1.0.0 255.255.0.0 10.0.0.2}
+			\item[] \texttt{ip route 10.1.3.0 255.255.255.0 10.0.3.2}
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img09}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Load Balancing}
+	\begin{itemize}
+		\item When multiple equal length routes are added for the same destination, the router will add them all to the routing table and load balance between them
+		\begin{itemize}
+			\item[] \texttt{R1(config)\# ip route 10.1.0.0 255.255.0.0 10.0.0.2}
+			\item[] \texttt{R1(config)\# ip route 10.1.0.0 255.255.0.0 10.0.3.2}
+		\end{itemize}
+		\begin{center}
+			\includegraphics[width=\linewidth]{img/img09}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
 \end{document}
