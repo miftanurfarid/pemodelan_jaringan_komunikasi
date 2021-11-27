@@ -417,8 +417,195 @@
 
 \section{Administrative Distance}
 
+\begin{frame}
+	\frametitle{Metric}
+	\begin{itemize}
+		\item A router will typically only learn routes to a particular destination from asingle routing protocol
+		\item When multiple routes to a destination are learned through a routingprotocol, the router will install the path or paths with the best (lowest)metric into the routing table
+		\item Different routing protocols use different methods to calculate the metric
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Metric}
+	\begin{itemize}
+		\item For example in RIP, path A>B>C>D has a hop count of 3, path A>B>D has ahop count of 2, so A>B>D would be preferred
+		\item In OSPF, if path A>B>C>D has a cost of 60, and path A>B>D has a cost of100, then A>B>C>D would be used
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Administrative Distance}
+	\begin{itemize}
+		\item If paths to the same destination are received from different routingprotocols, their metrics cannot be compared
+		\item For example, a RIP hop count of 5 cannot be compared to an OSPF cost of60. The comparison would be meaningless because the routing protocolscalculate the metric in completely different ways
+		\item The router must use a different method to choose when routes to thesame destination are received from different routing protocols
+		\item The Administrative Distance (AD) is used for this
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Administrative Distance}
+	\begin{itemize}
+		\item The Administrative Distance is a measure of how trusted the routingprotocol is
+		\item If routes to the same destination are received via different routingprotocols, the protocol with the best (lowest) AD wins
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Default Administrative Distance}
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{img/img28}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Administrative Distance and Metric}
+	\begin{itemize}
+		\item Administrative Distance is used to choose between multiple pathslearned via different routing protocols
+		\item Metric is used to choose between multiple paths learned via the sameprotocol
+		\item The Administrative Distance is considered first to narrow the choicedown to the single best routing protocol
+		\item The Metric is then considered to choose the best path or paths whichmake it into the routing table
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Show ip route}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img29}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Administrative Distance Example}
+	\begin{itemize}
+		\item Example: A router receives multiple routes to the 10.10.10.0/24 networkfrom both OSPF and RIP
+		\item When paths to the same destination are received from multiple routingprotocols, the Administrative Distance is considered first
+		\item OSPF has a better AD than RIP so the RIP routes will be discarded
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Administrative Distance Example}
+	\begin{itemize}
+		\item The router will then compare the routes received via OSPF and install theone with the lowest cost in the routing table
+		\item If multiple equal cost paths are received via OSPF they will all be installedin the routing table and the router will load balance outbound traffic tothe destination between them
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Floating Static Routes}
+	\begin{itemize}
+		\item If the best path to a destination is lost (for example because a link wentdown) it will be removed from the routing table and replaced with thenext best route
+		\item We might want to configure a static route as a backup for the routelearned via a routing protocol
+		\item A problem is that static routes have a default Administrative Distance of 1which will always be preferred over routes learned via an IGP
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Floating Static Routes – OSPF}
+	\begin{itemize}
+		\item We can change the Administrative Distance of a static route to make itact as the backup (rather than the preferred) route
+		\item Floating static route for OSPF example
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img30}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Floating Static Routes – Static Routes}
+	\begin{itemize}
+		\item Floating static routes can also be used where we are using purely staticrouting
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img31}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lab}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img32}
+	\end{center}
+\end{frame}
+
 \section{Loopback Interfaces}
 
+\begin{frame}
+	\frametitle{Loopback Interfaces}
+	\begin{itemize}
+		\item Loopback interfaces are logical interfaces
+		\item They allow you to assign an IP address to a router or L3 switch, which isnot tied to a physical interface
+		\item Because they don’t have any physical attributes which can fail, loopbackinterfaces never go down
+		\item Loopbacks are logical so they cannot be physically in the same subnet asother devices, so they are usually assigned a /32 subnet mask to avoidwasting IP addresses
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Loopback Interface Uses}
+	\begin{itemize}
+		\item It is best practice to assign a loopback interface to your routers
+		\item The loopback is commonly used for traffic that terminates on the routeritself
+		\item This could be management traffic, Voice over IP, BGP peering etc.
+		\item This provides redundancy if there are multiple paths to the router
+		\item The loopback is also used to identify the router (Router ID) in OSPF
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Loopback Interface Uses}
+	\begin{itemize}
+		\item The same loopback interface is usually used for multiple tasks (forexample management and BGP)
+		\item Multiple loopbacks can be configured. This is not common and onlyusually done where another, separate loopback is required for a specialuse case
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Loopback Interfaces}
+	\begin{itemize}
+		\item For example, my PC is on the 10.1.2.0 subnet and I want to connect to R1to manage it
+		\item If the top path goes down, I cannot connect to 10.0.0.1
+		\item If the bottom path goes down, I cannot connect to 10.0.3.1
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img33}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Loopback Interfaces}
+	\begin{itemize}
+		\item I add interface Loopback 0 with the IP address 192.168.1.1/32
+		\item I advertise 192.168.1.1/32 in my routing protocol
+		\item R4 learns the two paths to 192.168.1.1
+		\item I can still connect to 192.168.1.1 even if either path goes down
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img34}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lab}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img35}
+	\end{center}
+\end{frame}
+
 \section{Adjacencies and Passive Interfaces}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
