@@ -239,6 +239,74 @@
 
 \begin{frame}
 	\frametitle{VLAN Access Ports}
+	\begin{itemize}
+		\item VLAN access ports are configured on switch interfaces where end hostsare plugged in
+		\item Access ports are configured with one specific VLAN
+		\item The configuration is all on the switch, the end host is not VLAN aware
+		\item Switches only allow traffic within the same VLAN
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unicast Traffic within same IP subnet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img33}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Misconfigured VLAN}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img34}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Default VLAN - VLAN 1}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img35}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Access Port Configuration –\\ Eng VLAN}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img36}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Access Port Configuration –\\ Sales VLAN}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img37}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Verification – show vlan brief}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{img/img38}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Verification – show interface\\ switchport}
+	\begin{center}
+		\includegraphics[width=0.8\linewidth]{img/img39}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VLAN Lab}
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{img/img40}
+	\end{center}
+\end{frame}
+
+\section{VLAN Trunk Ports}
+
+\begin{frame}
+	\frametitle{VLAN Access Ports}
 	\begin{center}
 		\includegraphics[width=\linewidth]{img/img18}
 	\end{center}
@@ -374,8 +442,6 @@
 		\includegraphics[width=\linewidth]{img/img32}
 	\end{center}
 \end{frame}
-
-\section{VLAN Trunk Ports}
 
 \section{DTP Dynamic Trunking Protocol}
 
