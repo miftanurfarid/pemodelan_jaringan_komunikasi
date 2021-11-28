@@ -132,6 +132,110 @@
 
 \section{Why we have VLANs}
 
+\begin{frame}
+	\frametitle{Router Operations}
+	\begin{itemize}
+		\item Routers operate at Layer 3 of the OSI stack
+		\item Hosts in separate IP subnets must send traffic via a router tocommunicate
+		\item Security rules on routers or firewalls can be used to easily control whattraffic is allowed between different IP subnets at Layer 3
+		\item Routers do not forward broadcast traffic by default
+		\item They provide performance and security by splitting networks intosmaller domains at Layer 3
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Switch Operations}
+	\begin{itemize}
+		\item Switches operate at Layer 2 of the OSI stack
+		\item They \textbf{do} forward broadcast traffic by default
+		\item By default a campus switched network is one large broadcast domain
+		\item Switches flood broadcast traffic everywhere, including betweendifferent IP subnets
+		\item This raises performance and security concerns
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{LAN Networks}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img09}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unicast Traffic within same IP subnet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img10}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unicast Traffic between different IP subnets}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img11}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Broadcast Traffic}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img12}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Problem}
+	\begin{itemize}
+		\item Switches flood broadcast traffic everywhere, including betweendifferent IP subnets
+		\item This affects security because the traffic bypasses router or firewallLayer 3 security policies
+		\item It affects performance because every end host has to process thetraffic
+		\item It also affects performance by using bandwidth on links where thetraffic is not required
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Broadcast Traffic}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img13}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VLAN Virtual Local Area Networks}
+	\begin{itemize}
+		\item We can increase performance and security in the LAN by implementingVLANs on our switches
+		\item VLANs segment the LAN into separate broadcast domains at Layer 2
+		\item There is typically a one-to-one relationship between an IP subnet anda VLAN
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VLAN Virtual Local Area Networks}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img14}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unicast Traffic within same IP subnet}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img15}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unicast Traffic between different IP subnets}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img16}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Broadcast Traffic}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img17}
+	\end{center}
+\end{frame}
+
 \section{VLAN Access Ports}
 
 \section{VLAN Trunk Ports}
