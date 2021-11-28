@@ -208,8 +208,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{VLAN Virtual Local Area Networks}
+\begin{frame}{VLAN Virtual Local Area Networks}
 	\begin{center}
 		\includegraphics[width=\linewidth]{img/img14}
 	\end{center}
@@ -237,6 +236,144 @@
 \end{frame}
 
 \section{VLAN Access Ports}
+
+\begin{frame}
+	\frametitle{VLAN Access Ports}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img18}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{What about the links between\\ switches?}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img19}
+	\end{center}
+\end{frame}
+
+\begin{frame}{What about the links between\\ switches?}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img20}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dot1Q Trunks}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img21}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Dot1Q Trunks}
+	\begin{itemize}
+		\item An access port carries traffic for one specific VLAN
+		\item Dot1Q trunks are configured on the links between switches where weneed to carry traffic for multiple VLANs
+		\item ISL (Inter-Switch Link) was a Cisco proprietary trunking protocol whichis now obsolete
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dot1Q Trunks}
+	\begin{itemize}
+		\item When the switch forwards traffic to another switch, it tags the layer 2Dot1Q header with the correct VLAN
+		\item The receiving switch will only forward the traffic out ports that are inthat VLAN
+		\item The switch removes the Dot1Q tag from the Ethernet frame when itsends it to the end host
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dot1Q Trunks}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img22}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Dot1Q Trunks}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img23}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Hypervisors - VLAN Aware Hosts}
+	\begin{itemize}
+		\item End hosts are typically members of only one VLAN and are not VLANaware
+		\item A special case is virtualized hosts, where there are virtual machines indifferent IP subnets on the host
+		\item In this case we need to trunk the VLANs down to the host
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Hypervisors - VLAN Aware Hosts}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img24}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Voice VLAN}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img25}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Trunk Port Configuration}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img26}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Voice VLAN Configuration}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img27}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Native VLAN}
+	\begin{itemize}
+		\item The switch needs to know which VLAN to assign to any traffic whichcomes in untagged on a trunk port
+		\item This used to be required for when a switch was connected to a hub.Hubs are Layer 1 devices so are not VLAN aware
+		\item The Native VLAN is used for this
+		\item The default Native VLAN is VLAN 1
+		\item There are some security issues with using VLAN 1 as the Native VLAN sobest practice is to change it to an unused VLAN
+		\item The Native VLAN must match on both sides of a trunk for it to come up
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Native VLAN Configuration}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img28}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Verification – show interface switchport}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img29}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Limiting Allowed VLANs}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img30}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Allowed VLAN Configuration}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img31}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VLAN Lab}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img32}
+	\end{center}
+\end{frame}
 
 \section{VLAN Trunk Ports}
 
