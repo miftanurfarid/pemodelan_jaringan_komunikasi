@@ -445,6 +445,88 @@
 
 \section{DTP Dynamic Trunking Protocol}
 
+\begin{frame}
+	\frametitle{Dynamic Trunking Protocol DTP}
+	\begin{itemize}
+		\item If two Cisco switches are cabled together they can negotiate a trunkconnection using Cisco’s Dynamic Trunking Protocol DTP
+		\item It is however recommended to manually configure switch ports
+		\item Manual configuration:
+		\begin{itemize}
+			\item switchport mode access
+			\item switchport mode trunk
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dynamic Trunking Protocol DTP}
+	\begin{itemize}
+		\item DTP configuration:
+		\item \texttt{Switchport mode dynamic auto}: will form a trunk if theneighbour switch port is set to trunk or desirable. Trunk will not beformed if both sides are set to auto. Default on newer switches.
+		\item \texttt{Switchport mode dynamic desirable}: will form a trunk ifthe neighbour switch port is set to trunk, desirable or auto. Default onolder switches.
+		\item \texttt{Switchport nonegotiate}: disables DTP.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{DTP Lab}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img41}
+	\end{center}
+\end{frame}
+
 \section{VTP VLAN Trunking Protocol}
+
+\begin{frame}
+	\frametitle{VLAN Trunking Protocol VTP}
+	\begin{itemize}
+		\item The VLAN Trunking Protocol (VTP) allows you to add, edit or deleteVLANs on switches configured as VTP Servers, and have other switchesconfigured as VTP Clients synchronise their VLAN database with them
+		\item This can be convenient if you manage a large campus
+		\item You will still need to perform port level VLAN configuration on theswitches
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{VLAN Trunking Protocol VTP}
+	\begin{itemize}
+		\item Be careful if using VTP – if you accidentally introduce a switch with ahigher VLAN database revision number into the domain it can wipe outall your production VLANs
+		\item If using both DTP and VTP, the VTP domain name has to match onneighbour switches for trunks to be formed by DTP
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VTP Modes}
+	\begin{itemize}
+		\item VTP Server: Can add, edit or delete VLANs. A VTP Server willsynchronise its VLAN database from another Server with a higherrevision number.
+		\item VTP Client: Cannot add, edit or delete VLANs. A VTP Client willsynchronise its VLAN database from the Server with the highestrevision number.
+		\item VTP Transparent: Does not participate in the VTP domain. Does notadvertise or learn VLAN information but will pass it on. Can add, editor delete VLANs in its own local VLAN database.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VTP Transparent Co-Existence}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img42}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VTP Configuration}
+	\begin{center}
+		\includegraphics[width=0.7\linewidth]{img/img43}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Verification – show vtp status}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img44}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{VTP Lab}
+	\begin{center}
+		\includegraphics[width=\linewidth]{img/img45}
+	\end{center}
+\end{frame}
 
 \end{document}
