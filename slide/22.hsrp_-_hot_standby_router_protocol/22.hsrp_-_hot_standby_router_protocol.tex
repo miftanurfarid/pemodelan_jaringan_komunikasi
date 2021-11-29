@@ -26,7 +26,149 @@
 
 \section{Network Redundancy}
 
+\begin{frame}
+	\frametitle{Network Redundancy}
+	\begin{multicols}{2}
+		\begin{figure}
+			\centering
+			\includegraphics[height=0.8\textheight]{img/img01}
+		\end{figure}
+		\columnbreak
+		\begin{itemize}
+			\item In this example, all the network infrastructure devicesare a single point of failure
+			\item If any switch or router goes down, the PCs will losetheir Internet access
+			\item This is common for small branch offices where thecost of adding redundant devices cannot be justified
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}{Network Redundancy}
+	\begin{multicols}{2}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{img/img02}
+		\end{figure}
+		\columnbreak
+		\begin{itemize}
+			\item The point of redundancy is toeliminate single points of failure
+			\item Now we have added redundantswitches, routers and Internetconnections
+			\item We can still reach the Internet if anycore/distribution layer switch, routeror link fails
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Network Redundancy – Access Layer}
+	\begin{multicols}{2}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{img/img03}
+		\end{figure}
+		\columnbreak
+		\begin{itemize}
+			\item We do not typically implementredundancy at the access layerbecause end hosts have only onenetwork card
+			\item Servers with redundant NICs are anexception
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Network Redundancy}
+	\begin{multicols}{2}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{img/img04}
+		\end{figure}
+		\columnbreak
+		\begin{itemize}
+			\item In a real world network thecore/distribution layer switcheswould typically be Layer 3 switches
+			\item I’m using Layer 2 switches in theexample to aid learning
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Network Redundancy – Layer 3 Configuration}
+	\begin{multicols}{2}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{img/img05}
+		\end{figure}
+		\columnbreak
+		\begin{itemize}
+			\item Redundancy and failover are relativelyeasy to implement for Layer 3 routing
+			\item Routes on R1:
+		\end{itemize}
+		\begin{figure}
+			\centering
+			\includegraphics[height=0.3\linewidth]{img/img06}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
 \section{FHRP First Hop Redundancy Protocols}
+
+\begin{frame}
+	\frametitle{Network Redundancy – Layer 3 Configuration}
+	\begin{multicols}{2}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{img/img07}
+		\end{figure}
+		\columnbreak
+		\begin{itemize}
+			\item Redundancy and failover are relativelyeasy to implement for Layer 3 routing
+			\item Routes on R1:
+		\end{itemize}
+		\begin{figure}
+			\centering
+			\includegraphics[height=0.3\linewidth]{img/img08}
+		\end{figure}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Network Redundancy}
+	\begin{multicols}{2}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{img/img09}
+		\end{figure}
+		\columnbreak
+		\begin{itemize}
+			\item We have redundant gateways for the PCsin the 10.10.10.0/24 network:
+			\item R1 with IP address 10.10.10.2
+			\item R2 with IP address 10.10.10.3
+			\item We could configure half our PCs to use10.10.10.2 as their default gateway, andhalf to use 10.10.10.3
+			\item That would be inconvenient and wouldrequire manual reconfiguration on thePCs to failover if one of the routers failed
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\frametitle{First Hop Redundancy Protocols (FHRP)}
+	\begin{multicols}{2}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{img/img10}
+		\end{figure}
+		\columnbreak
+		\begin{itemize}
+			\item First Hop Redundancy Protocols(HSRP) use a Virtual IP (VIP) andMAC address to allow forautomated gateway failover
+			\item The hosts use the VIP as theirdefault gateway address
+			\item If a physical gateway fails, anothergateway will take over
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\frametitle{First Hop Redundancy Protocols (FHRP)}
+	\begin{itemize}
+		\item Hot Standby Router Protocol (HSRP): Cisco proprietary. Deployed inactive/standby pair.
+		\item Virtual Router Redundancy Protocol (VRRP): Open standard. Deployedin active/standby pair. Very similar to HSRP.
+		\item Gateway Load Balancing Protocol (GLBP): Cisco proprietary. Supportsactive/active load balancing across multiple routers.
+	\end{itemize}
+\end{frame}
 
 \section{HSRP Hot Standby Router Protocol}
 
