@@ -134,9 +134,11 @@
 			\centering
 			\includegraphics[width=\linewidth]{img/img09}
 		\end{figure}
-		\columnbreak
 		\begin{itemize}
 			\item We have redundant gateways for the PCsin the 10.10.10.0/24 network:
+		\end{itemize}
+		\columnbreak
+		\begin{itemize}
 			\item R1 with IP address 10.10.10.2
 			\item R2 with IP address 10.10.10.3
 			\item We could configure half our PCs to use10.10.10.2 as their default gateway, andhalf to use 10.10.10.3
@@ -146,7 +148,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{First Hop Redundancy Protocols (FHRP)}
+	\frametitle{First Hop Redundancy Protocols\\ (FHRP)}
 	\begin{multicols}{2}
 		\begin{figure}
 			\centering
@@ -161,8 +163,7 @@
 	\end{multicols}
 \end{frame}
 
-\begin{frame}
-	\frametitle{First Hop Redundancy Protocols (FHRP)}
+\begin{frame}{First Hop Redundancy Protocols\\ (FHRP)}
 	\begin{itemize}
 		\item Hot Standby Router Protocol (HSRP): Cisco proprietary. Deployed inactive/standby pair.
 		\item Virtual Router Redundancy Protocol (VRRP): Open standard. Deployedin active/standby pair. Very similar to HSRP.
@@ -172,6 +173,125 @@
 
 \section{HSRP Hot Standby Router Protocol}
 
+\begin{frame}
+	\frametitle{HSRP (Hot Standby Router Protocol)}
+	\begin{multicols}{2}
+		\begin{figure}
+			\centering
+			\includegraphics[width=\linewidth]{img/img11}
+		\end{figure}
+		\columnbreak
+		\begin{itemize}
+			\item HSRP uses a Virtual IP (VIP) andMAC address to allow forautomated gateway failover
+			\item The hosts use the VIP as theirdefault gateway address
+			\item If the active gateway fails, thestandby gateway will take over
+		\end{itemize}
+	\end{multicols}
+\end{frame}
+
+\begin{frame}
+	\frametitle{HSRP Operations}
+	\begin{itemize}
+		\item Both routers have a normal physical IP address and MAC address on theirHSRP interface. Unique addresses are used on both routers.
+		\item They both also have the HSRP virtual IP and MAC address configured onthe interface. The same addresses are used on both routers.
+		\item When they come online, one is elected the HSRP active router, the other isthe standby
+		\item The active router owns the virtual IP and MAC address and responds toARP requests
+		\item All traffic for the VIP goes through the active router
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{HSRP Operations}
+	\begin{itemize}
+		\item The routers send hello messages to each over their HSRP interface
+		\item If the standby router stops receiving hellos from the active it will transitionto be the active router
+		\item It will take ownership of the virtual IP and MAC address and respond toARP requests
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{HSRP Configuration}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/img12}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Verification – show standby}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/img13}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lab}
+	\begin{figure}
+		\centering
+		\includegraphics[height=0.8\textheight]{img/img14}
+	\end{figure}
+\end{frame}
+
 \section{HSRP Advanced Topics}
+
+\begin{frame}
+	\frametitle{Priority and Pre-emption}
+	\begin{itemize}
+		\item You can choose which router will be the active by setting priority on therouters
+		\item The router with the higher priority will be preferred (default is 100)
+		\item In the event of a tie the highest IP address wins
+		\item If pre-emption is also enabled, when a higher priority router comes backonline after a failure it will transition back to active
+		\item If pre-emption is not enabled (default), the lower priority router willremain active when the failed router comes back online
+		\item This can be more stable if a higher priority router is flapping
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{HSRP Configuration - Priority and Pre-emption}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/img15}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{HSRP Version}
+	\begin{itemize}
+		\item HSRP version 2 introduced a few minor improvements
+		\item The default is version 1
+		\item Both routers must be running the same version
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{HSRP Configuration - Version}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/img16}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Verification – show standby}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/img17}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{‘Active/Active’ HSRP}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth]{img/img18}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Lab}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.6\linewidth]{img/img19}
+	\end{figure}
+\end{frame}
 
 \end{document}
